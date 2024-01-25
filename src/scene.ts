@@ -440,10 +440,21 @@ function updateCameraWithMouse() {
 //   onDeviceOrientationChangeEvent,
 //   true,
 // );
+//
+//
+let camAngle = 0;
+let camRadius = 4;
+let camSpeed = 0.001;
+
+function cameraRotate() {
+  camAngle += camSpeed;
+  camera.position.x = camRadius * Math.cos(camAngle);
+  camera.position.z = camRadius * Math.sin(camAngle);
+}
 
 function animate() {
   requestAnimationFrame(animate);
-  updateCameraWithMouse();
+  // updateCameraWithMouse();
   if (fadeState) {
     if (fadeState === "out") {
       ballVisibility -= 0.01;
@@ -453,6 +464,7 @@ function animate() {
     setSphereGreyness(ballVisibility);
     setSphereThickness(ballVisibility);
   }
+  cameraRotate();
   render();
 }
 
@@ -489,6 +501,8 @@ export function fadeInBall(time: number) {
   }, time);
 }
 
+const camBack = camSpeed * 50;
+
 export function replaceBallImage(imageURI: string) {
   const textureLoader = new THREE.TextureLoader();
   const newTexture = textureLoader.load(imageURI);
@@ -497,6 +511,10 @@ export function replaceBallImage(imageURI: string) {
   newTexture.wrapT = THREE.RepeatWrapping;
   newTexture.repeat.set(5, 3);
   innerSphereMaterial.map = newTexture;
+  let lookPosition = new THREE.Vector3();
+  lookPosition.x = camRadius * Math.cos(camAngle - camBack);
+  lookPosition.z = camRadius * Math.sin(camAngle - camBack);
+  innerSphereMesh.lookAt(lookPosition);
 }
 
 export function onLoad(callback: () => void) {

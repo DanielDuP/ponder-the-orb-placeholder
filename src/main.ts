@@ -15,14 +15,14 @@ document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
           id="main-text"
           class="lg:text-8xl text-center md:text-start p-2 text-6xl animation animation-visible font-bold mb-2 colorful glowing"
         >
-          Unsure if you're ready to buy an orb to ponder?
+          PvP AI Prompting - now with orbs
         </h1>
         <div>
           <p
             id="sub-text"
             class="md:text-start md:max-w-64 lg:max-w-max text-center md:text-xl mb-4 ml-4 animation animation-visible"
           >
-            Sign up for the world's first Orb-As-A-Service (OAAS).
+            Pondering your orb has never been so...competitive
           </p>
           <form
             netlify
