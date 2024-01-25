@@ -110,7 +110,7 @@ function addCandleLight(
 // Create a new FBXLoader instance
 const loader = new GLTFLoader();
 const dracoLoader = new DRACOLoader();
-dracoLoader.setDecoderPath("./public/draco/");
+dracoLoader.setDecoderPath("/draco/");
 loader.setDRACOLoader(dracoLoader);
 
 // Load your FBX file
@@ -214,7 +214,7 @@ function init() {
 
   const textureLoader = new THREE.TextureLoader();
 
-  textureEquirec = textureLoader.load("./public/dark-s_nz.jpg");
+  textureEquirec = textureLoader.load("./dark-s_nz.jpg");
   // textureEquirec.mapping = THREE.EquirectangularReflectionMapping;
 
   textureEquirec.colorSpace = THREE.SRGBColorSpace;
