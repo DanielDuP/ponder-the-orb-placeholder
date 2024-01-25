@@ -37,10 +37,10 @@ let loaderCallback: () => void | undefined;
 
 // subtle mouse movements:
 // Variables to store the current mouse position
-// let mouseX = 0;
-// let mouseY = 0;
-// const sensitivityX = 0.0025; // Adjust as needed for x-axis sensitivity
-// const sensitivityY = 0.0012; // Adjust as needed for y-axis sensitivity
+let mouseX = 0;
+let mouseY = 0;
+const sensitivityX = 0.0025; // Adjust as needed for x-axis sensitivity
+const sensitivityY = 0.0012; // Adjust as needed for y-axis sensitivity
 
 const baseLight = new THREE.HemisphereLight(0xffffff, 0x000000, 0.5);
 
@@ -76,7 +76,7 @@ function getCurrentCameraPosition() {
   return position1;
 }
 
-// let isMoving = false;
+let isMoving = false;
 
 init();
 
@@ -367,83 +367,83 @@ function onWindowResize() {
 }
 
 // Event listener for mouse movement
-// document.addEventListener("mousemove", (event) => {
-//  mouseX = event.clientX - window.innerWidth / 2;
-//  mouseY = event.clientY - window.innerHeight / 2;
-// });
+document.addEventListener("mousemove", (event) => {
+  mouseX = event.clientX - window.innerWidth / 2;
+  mouseY = event.clientY - window.innerHeight / 2;
+});
 
-// function updateCameraWithMouse() {
-//   if (!camera) {
-//     throw new Error("Camera is undefined!");
-//   }
-//   // Adjust the camera position or rotation based on mouse position
-//   // Only update if the camera is not currently transitioning
-//   if (isMoving) {
-//     return;
-//   }
-//
-//   const currentPosition = getCurrentCameraPosition().clone();
-//   const zoomFactor = controls.zoomed ? 0.1 : 1;
-//
-//   const deviationX = mouseX * sensitivityX * zoomFactor;
-//   const deviationY = mouseY * sensitivityY * zoomFactor;
-//
-//   currentPosition.x += deviationX;
-//   currentPosition.y -= deviationY;
-//   camera.position.copy(currentPosition);
-//   camera.lookAt(origin);
-// }
-
-function onDeviceOrientationChangeEvent(event: any) {
-  if (initialAlpha === undefined || initialBeta === undefined) {
-    initialAlpha = event.alpha;
-    initialBeta = event.beta;
+function updateCameraWithMouse() {
+  if (!camera) {
+    throw new Error("Camera is undefined!");
+  }
+  // Adjust the camera position or rotation based on mouse position
+  // Only update if the camera is not currently transitioning
+  if (isMoving) {
     return;
   }
-  // Get device orientation
-  var alpha = event.alpha; // Yaw (around y-axis)
-  var beta = event.beta; // Pitch (around x-axis)
-  // var gamma = event.gamma; // Roll (around z-axis)
 
-  // Clamp values
-  // For alpha: Limit to +/- 45 degrees. Adjust according to your initial orientation.
-  var maxHorizontalAngle = 45;
-  alpha = Math.max(
-    -maxHorizontalAngle,
-    Math.min(maxHorizontalAngle, alpha - initialAlpha),
-  );
+  const currentPosition = getCurrentCameraPosition().clone();
+  const zoomFactor = controls.zoomed ? 0.1 : 1;
 
-  // For beta: Limit to +/- 20 degrees from the horizontal plane. Adjust according to your initial orientation.
-  var maxVerticalAngle = 20;
-  beta = Math.max(
-    -maxVerticalAngle,
-    Math.min(maxVerticalAngle, beta - initialBeta),
-  );
+  const deviationX = mouseX * sensitivityX * zoomFactor;
+  const deviationY = mouseY * sensitivityY * zoomFactor;
 
-  // Convert degrees to radians
-  var euler = new THREE.Euler(
-    THREE.MathUtils.degToRad(beta),
-    THREE.MathUtils.degToRad(alpha),
-    THREE.MathUtils.degToRad(0),
-    "YXZ",
-  );
-  camera?.quaternion.setFromEuler(euler);
+  currentPosition.x += deviationX;
+  currentPosition.y -= deviationY;
+  camera.position.copy(currentPosition);
+  camera.lookAt(origin);
 }
 
+// function onDeviceOrientationChangeEvent(event: any) {
+//   if (initialAlpha === undefined || initialBeta === undefined) {
+//     initialAlpha = event.alpha;
+//     initialBeta = event.beta;
+//     return;
+//   }
+//   // Get device orientation
+//   var alpha = event.alpha; // Yaw (around y-axis)
+//   var beta = event.beta; // Pitch (around x-axis)
+//   // var gamma = event.gamma; // Roll (around z-axis)
+//
+//   // Clamp values
+//   // For alpha: Limit to +/- 45 degrees. Adjust according to your initial orientation.
+//   var maxHorizontalAngle = 45;
+//   alpha = Math.max(
+//     -maxHorizontalAngle,
+//     Math.min(maxHorizontalAngle, alpha - initialAlpha),
+//   );
+//
+//   // For beta: Limit to +/- 20 degrees from the horizontal plane. Adjust according to your initial orientation.
+//   var maxVerticalAngle = 20;
+//   beta = Math.max(
+//     -maxVerticalAngle,
+//     Math.min(maxVerticalAngle, beta - initialBeta),
+//   );
+//
+//   // Convert degrees to radians
+//   var euler = new THREE.Euler(
+//     THREE.MathUtils.degToRad(beta),
+//     THREE.MathUtils.degToRad(alpha),
+//     THREE.MathUtils.degToRad(0),
+//     "YXZ",
+//   );
+//   camera?.quaternion.setFromEuler(euler);
+// }
+
 // Initial alpha and beta values (to calibrate initial orientation)
-var initialAlpha: number | undefined = undefined; // Adjust as needed
-var initialBeta: number | undefined = undefined; // Adjust as needed
+// var initialAlpha: number | undefined = undefined; // Adjust as needed
+// var initialBeta: number | undefined = undefined; // Adjust as needed
 
 // Add event listener for device orientation
-window.addEventListener(
-  "deviceorientation",
-  onDeviceOrientationChangeEvent,
-  true,
-);
+// window.addEventListener(
+//   "deviceorientation",
+//   onDeviceOrientationChangeEvent,
+//   true,
+// );
 
 function animate() {
   requestAnimationFrame(animate);
-  // updateCameraWithMouse();
+  updateCameraWithMouse();
   if (fadeState) {
     if (fadeState === "out") {
       ballVisibility -= 0.01;
@@ -461,7 +461,7 @@ function render() {
     console.error("No camera!");
     return;
   }
-  // camera.lookAt(scene.position);
+  camera.lookAt(scene.position);
   renderer.render(scene, camera);
 }
 
