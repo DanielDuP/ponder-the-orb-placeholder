@@ -9,7 +9,7 @@ type ItemType = {
 
 const websiteText: ItemType[] = [
   {
-    main: "Unsure if you're ready to buy an orb to ponder?",
+    main: "Unsure if you're ready for a full-time orb?",
     sub: "Sign up for the world's first Orb-As-A-Service (OAAS).",
     qualifier: "silly!",
     imageURI: "./pondering.webp",
@@ -17,8 +17,14 @@ const websiteText: ItemType[] = [
   {
     main: "Experience competitive AI prompting",
     sub: "DESTROY your friends with FACTS and LOGIC.",
-    qualifier: "brilliant!",
+    qualifier: "debate!",
     imageURI: "./battle.webp",
+  },
+  {
+    main: "Die in the orb, die in real life*!",
+    sub: "*What? No.",
+    qualifier: "killer!",
+    imageURI: "./danger.webp",
   },
 ];
 
