@@ -395,6 +395,11 @@ function onWindowResize() {
 // }
 
 function onDeviceOrientationChangeEvent(event: any) {
+  if (initialAlpha === undefined || initialBeta === undefined) {
+    initialAlpha = event.alpha;
+    initialBeta = event.beta;
+    return;
+  }
   // Get device orientation
   var alpha = event.alpha; // Yaw (around y-axis)
   var beta = event.beta; // Pitch (around x-axis)
@@ -426,8 +431,8 @@ function onDeviceOrientationChangeEvent(event: any) {
 }
 
 // Initial alpha and beta values (to calibrate initial orientation)
-var initialAlpha = 0; // Adjust as needed
-var initialBeta = 90; // Adjust as needed
+var initialAlpha: number | undefined = undefined; // Adjust as needed
+var initialBeta: number | undefined = undefined; // Adjust as needed
 
 // Add event listener for device orientation
 window.addEventListener(
