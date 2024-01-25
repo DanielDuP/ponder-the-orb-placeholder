@@ -110,7 +110,7 @@ function addCandleLight(
 // Create a new FBXLoader instance
 const loader = new GLTFLoader();
 const dracoLoader = new DRACOLoader();
-dracoLoader.setDecoderPath("public/draco/");
+dracoLoader.setDecoderPath("./public/draco/");
 loader.setDRACOLoader(dracoLoader);
 
 // Load your FBX file
