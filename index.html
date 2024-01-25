@@ -10,5 +10,26 @@
     <div id="orb-render-area"></div>
     <div id="app"></div>
     <script type="module" src="/src/main.ts"></script>
+    <form
+      style="display: none"
+      netlify
+      name="waitlist"
+      class="bg-purple-900 flex overflow-hidden w-full rounded-2xl ring-offset-0 has-[:focus]:ring-4 ring-purple-500"
+    >
+      <input
+        type="email"
+        class="bg-purple-900 text-white text-lg rounded-l-2xl flex flex-grow p-4"
+        placeholder="email@example.com"
+        id="emailInput"
+        name="email"
+      />
+      <button
+        type="submit"
+        id="waitlistButton"
+        class="bg-purple-600 hover:bg-violet-500 active:bg-purple-950 text-white px-6"
+      >
+        Waitlist me!
+      </button>
+    </form>
   </body>
 </html>

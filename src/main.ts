@@ -40,6 +40,7 @@ document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
               id="emailInput"
               name="email"
             />
+            <input type="hidden" name="form-name" value="waitlist" />
             <button
               type="submit"
               id="waitlistButton"
