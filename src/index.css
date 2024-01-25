@@ -27,7 +27,12 @@ p {
 
 .colorful {
   animation: rotate 6s infinite linear;
-  background-image: linear-gradient(var(--conical-angle), red, magenta, blue);
+  background-image: linear-gradient(
+    var(--conical-angle),
+    purple,
+    rebeccapurple,
+    slateblue
+  );
   background-clip: text;
   color: transparent;
 }
@@ -37,7 +42,7 @@ a {
 }
 
 .glowing {
-  text-shadow: 0px 0px 17px rgba(255, 255, 255, 0.21);
+  text-shadow: 0px 0px 17px rgba(255, 255, 255, 0.11);
 }
 
 .animation {
@@ -58,7 +63,7 @@ h1 {
 
 .flat-background {
   @apply fixed left-0 right-0 top-0 bottom-0 -z-10 bg-gray-950;
-  clip-path: polygon(0 0, 100% 0, 100% 10%, 0 25%);
+  clip-path: polygon(0 0, 100% 0, 100% 20%, 0 25%);
 }
 
 .flat-background2 {

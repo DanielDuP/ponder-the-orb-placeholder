@@ -13,14 +13,14 @@ document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
       <div class="md:w-4/6 flex flex-col justify-between md:justify-around h-full">
         <h1
           id="main-text"
-          class="lg:text-8xl text-center md:text-start p-2 text-6xl animation animation-visible font-bold mb-2 colorful glowing"
+          class="lg:text-8xl text-center md:text-start p-2 text-5xl animation animation-visible font-bold mb-2 colorful glowing"
         >
           PvP AI Prompting - now with orbs
         </h1>
         <div>
           <p
             id="sub-text"
-            class="md:text-start md:max-w-64 lg:max-w-max text-center md:text-xl mb-4 ml-4 animation animation-visible"
+            class="md:text-start md:max-w-64 lg:max-w-max text-center md:text-xl mb-4 md:ml-4 animation animation-visible"
           >
             Pondering your orb has never been so...competitive
           </p>
