@@ -37,10 +37,10 @@ let loaderCallback: () => void | undefined;
 
 // subtle mouse movements:
 // Variables to store the current mouse position
-let mouseX = 0;
-let mouseY = 0;
-const sensitivityX = 0.0025; // Adjust as needed for x-axis sensitivity
-const sensitivityY = 0.0012; // Adjust as needed for y-axis sensitivity
+// let mouseX = 0;
+// let mouseY = 0;
+// const sensitivityX = 0.0025; // Adjust as needed for x-axis sensitivity
+// const sensitivityY = 0.0012; // Adjust as needed for y-axis sensitivity
 
 const baseLight = new THREE.HemisphereLight(0xffffff, 0x000000, 0.5);
 
@@ -48,21 +48,21 @@ const fireLight = new THREE.HemisphereLight(0xffa500, 0x000000);
 fireLight.lookAt(origin);
 fireLight.position.set(0, 20, 60);
 
-let fireIntensity = 0.5;
-let fireColor = 0xffa500;
+// let fireIntensity = 0.5;
+// let fireColor = 0xffa500;
 
-const fireChangeTime = 200;
+// const fireChangeTime = 200;
 
-function evolveFireIntensity() {
-  fireIntensity = Math.random() * 0.2 + 0.5; // Range between 0.5 and 100
-}
+// function evolveFireIntensity() {
+//   fireIntensity = Math.random() * 0.2 + 0.5; // Range between 0.5 and 100
+// }
 
-function evolveFireColor() {
-  fireColor = Math.random() > 0.5 ? 0xe06d60 : 0xe07d60; // Orange and red
-}
+// function evolveFireColor() {
+//  fireColor = Math.random() > 0.5 ? 0xe06d60 : 0xe07d60; // Orange and red
+// }
 
-setInterval(evolveFireColor, fireChangeTime * 0.8);
-setInterval(evolveFireIntensity, fireChangeTime * 0.5);
+// setInterval(evolveFireColor, fireChangeTime * 0.8);
+// setInterval(evolveFireIntensity, fireChangeTime * 0.5);
 
 // function flickerLight() {
 //   fireLight.intensity = fireIntensity;
@@ -76,7 +76,7 @@ function getCurrentCameraPosition() {
   return position1;
 }
 
-let isMoving = false;
+// let isMoving = false;
 
 init();
 
@@ -146,7 +146,7 @@ function setCameraPosition(duration = 1000) {
   if (!camera) {
     throw new Error("Camera not yet defined!");
   }
-  isMoving = true;
+  // isMoving = true;
   const newPosition = getCurrentCameraPosition();
   const startPos = camera.position.clone();
   const endPos = newPosition.clone();
@@ -171,7 +171,7 @@ function setCameraPosition(duration = 1000) {
     if (t < 1) {
       requestAnimationFrame(animateTransition);
     } else {
-      isMoving = false;
+      //  isMoving = false;
     }
   }
 
@@ -368,10 +368,10 @@ function onWindowResize() {
 }
 
 // Event listener for mouse movement
-document.addEventListener("mousemove", (event) => {
-  mouseX = event.clientX - window.innerWidth / 2;
-  mouseY = event.clientY - window.innerHeight / 2;
-});
+// document.addEventListener("mousemove", (event) => {
+//  mouseX = event.clientX - window.innerWidth / 2;
+//  mouseY = event.clientY - window.innerHeight / 2;
+// });
 
 // function updateCameraWithMouse() {
 //   if (!camera) {
