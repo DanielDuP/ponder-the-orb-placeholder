@@ -446,9 +446,9 @@ function animate() {
   updateCameraWithMouse();
   if (fadeState) {
     if (fadeState === "out") {
-      ballVisibility -= 0.01;
+      ballVisibility -= 0.05;
     } else {
-      ballVisibility += 0.01;
+      ballVisibility += 0.05;
     }
     setSphereGreyness(ballVisibility);
     setSphereThickness(ballVisibility);
@@ -475,12 +475,18 @@ export function beginRendering() {
 
 export function fadeOutBall(time: number) {
   fadeState = "out";
-  setTimeout(() => (fadeState = undefined), time);
+  setTimeout(() => {
+    fadeState = undefined;
+    ballVisibility = 0;
+  }, time);
 }
 
 export function fadeInBall(time: number) {
   fadeState = "in";
-  setTimeout(() => (fadeState = undefined), time);
+  setTimeout(() => {
+    fadeState = undefined;
+    ballVisibility = 1;
+  }, time);
 }
 
 export function replaceBallImage(imageURI: string) {
