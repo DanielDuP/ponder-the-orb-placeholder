@@ -23,7 +23,7 @@ const position1 = new THREE.Vector3(0, 2, 6);
 const position2 = new THREE.Vector3(0, 0, 4);
 // const position3 = new THREE.Vector3(0, 0, 1.3);
 
-let sphereVisibility = 0;
+// let sphereVisibility = 0;
 let ballVisibility = 1;
 let fadeState: "out" | "in" | undefined;
 
@@ -64,10 +64,10 @@ function evolveFireColor() {
 setInterval(evolveFireColor, fireChangeTime * 0.8);
 setInterval(evolveFireIntensity, fireChangeTime * 0.5);
 
-function flickerLight() {
-  fireLight.intensity = fireIntensity;
-  fireLight.color.setHex(fireColor);
-}
+// function flickerLight() {
+//   fireLight.intensity = fireIntensity;
+//   fireLight.color.setHex(fireColor);
+// }
 
 function getCurrentCameraPosition() {
   if (controls.zoomed) {
@@ -373,33 +373,33 @@ document.addEventListener("mousemove", (event) => {
   mouseY = event.clientY - window.innerHeight / 2;
 });
 
-function updateCameraWithMouse() {
-  if (!camera) {
-    throw new Error("Camera is undefined!");
-  }
-  // Adjust the camera position or rotation based on mouse position
-  // Only update if the camera is not currently transitioning
-  if (isMoving) {
-    return;
-  }
-
-  const currentPosition = getCurrentCameraPosition().clone();
-  const zoomFactor = controls.zoomed ? 0.1 : 1;
-
-  const deviationX = mouseX * sensitivityX * zoomFactor;
-  const deviationY = mouseY * sensitivityY * zoomFactor;
-
-  currentPosition.x += deviationX;
-  currentPosition.y -= deviationY;
-  camera.position.copy(currentPosition);
-  camera.lookAt(origin);
-}
+// function updateCameraWithMouse() {
+//   if (!camera) {
+//     throw new Error("Camera is undefined!");
+//   }
+//   // Adjust the camera position or rotation based on mouse position
+//   // Only update if the camera is not currently transitioning
+//   if (isMoving) {
+//     return;
+//   }
+//
+//   const currentPosition = getCurrentCameraPosition().clone();
+//   const zoomFactor = controls.zoomed ? 0.1 : 1;
+//
+//   const deviationX = mouseX * sensitivityX * zoomFactor;
+//   const deviationY = mouseY * sensitivityY * zoomFactor;
+//
+//   currentPosition.x += deviationX;
+//   currentPosition.y -= deviationY;
+//   camera.position.copy(currentPosition);
+//   camera.lookAt(origin);
+// }
 
 function onDeviceOrientationChangeEvent(event: any) {
   // Get device orientation
   var alpha = event.alpha; // Yaw (around y-axis)
   var beta = event.beta; // Pitch (around x-axis)
-  var gamma = event.gamma; // Roll (around z-axis)
+  // var gamma = event.gamma; // Roll (around z-axis)
 
   // Clamp values
   // For alpha: Limit to +/- 45 degrees. Adjust according to your initial orientation.
