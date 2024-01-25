@@ -87,7 +87,6 @@ function addCandleLight(
   intensity = 10,
   distance = 200,
 ) {
-  console.log(position);
   // Create a PointLight with a warm color
   const candleLight = new THREE.PointLight(color, intensity, distance);
 
@@ -111,7 +110,7 @@ function addCandleLight(
 // Create a new FBXLoader instance
 const loader = new GLTFLoader();
 const dracoLoader = new DRACOLoader();
-dracoLoader.setDecoderPath("node_modules/three/examples/jsm/libs/draco/");
+dracoLoader.setDecoderPath("public/draco/");
 loader.setDRACOLoader(dracoLoader);
 
 // Load your FBX file
@@ -130,7 +129,6 @@ loader.load(
       child.getWorldPosition(position);
       addCandleLight(scene, position);
     });
-    console.log("loading complete");
     loaderCallback?.();
   },
 );
@@ -216,8 +214,9 @@ function init() {
 
   const textureLoader = new THREE.TextureLoader();
 
-  textureEquirec = textureLoader.load("./target2.webp");
+  textureEquirec = textureLoader.load("./public/dark-s_nz.jpg");
   // textureEquirec.mapping = THREE.EquirectangularReflectionMapping;
+
   textureEquirec.colorSpace = THREE.SRGBColorSpace;
 
   textureEquirec.wrapS = THREE.RepeatWrapping;
@@ -439,7 +438,6 @@ window.addEventListener(
 
 function animate() {
   requestAnimationFrame(animate);
-  console.log(camera?.quaternion);
   // updateCameraWithMouse();
   if (fadeState) {
     if (fadeState === "out") {
