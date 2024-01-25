@@ -15,7 +15,7 @@ body {
 }
 
 #orb-render-area {
-  @apply bg-emerald-950 fixed w-full md:w-10/12 h-screen right-0 top-0 bottom-0 -z-20 overflow-hidden;
+  @apply bg-purple-950 fixed w-full md:w-10/12 h-screen right-0 top-0 bottom-0 -z-20 overflow-hidden;
 }
 
 h1,
