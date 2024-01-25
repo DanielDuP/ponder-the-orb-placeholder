@@ -11,13 +11,17 @@ document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
       class="container flex-grow mr-auto flex align-center justify-start p-4 md:p-8"
     >
       <div class="md:w-4/6 flex flex-col justify-between md:justify-around h-full">
-        <h1
-          id="main-text"
-          class="lg:text-8xl text-center md:text-start p-2 text-5xl animation animation-visible font-bold mb-2 colorful glowing"
+        <div
+          class="flex items-center md:min-h-[420px]"
         >
-          PvP AI Prompting - now with orbs
-        </h1>
-        <div>
+          <h1
+            id="main-text"
+            class="lg:text-8xl text-center md:text-start p-2 text-5xl animation animation-visible font-bold mb-2 colorful glowing"
+          >
+            PvP AI Prompting - now with orbs
+          </h1>
+        </div>
+        <div class="md:max-w-[25rem] min-h-[135px] flex flex-col justify-end">
           <p
             id="sub-text"
             class="md:text-start md:max-w-64 lg:max-w-max text-center md:text-xl mb-4 md:ml-4 animation animation-visible"
@@ -27,7 +31,7 @@ document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
           <form
             netlify
             name="waitlist"
-            class="bg-purple-900 flex overflow-hidden w-full md:max-w-[40rem] rounded-2xl ring-offset-0 has-[:focus]:ring-4 ring-purple-500"
+            class="bg-purple-900 flex overflow-hidden w-full rounded-2xl ring-offset-0 has-[:focus]:ring-4 ring-purple-500"
           >
             <input
               type="email"
