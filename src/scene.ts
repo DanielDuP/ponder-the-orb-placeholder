@@ -446,9 +446,9 @@ function animate() {
   updateCameraWithMouse();
   if (fadeState) {
     if (fadeState === "out") {
-      ballVisibility -= 0.05;
+      ballVisibility -= 0.01;
     } else {
-      ballVisibility += 0.05;
+      ballVisibility += 0.01;
     }
     setSphereGreyness(ballVisibility);
     setSphereThickness(ballVisibility);

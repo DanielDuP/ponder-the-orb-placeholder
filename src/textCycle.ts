@@ -58,21 +58,23 @@ function cycleThroughArray(arr: ItemType[]) {
       "animation-visible",
       "animation-invisible",
     );
-    fadeOutBall(2000);
-
+    fadeOutBall(5000);
+    const item = arr[index];
     setTimeout(() => {
-      const item = arr[index];
       updateTextContent(item);
-      replaceBallImage(item.imageURI);
       changeClass(
         document.querySelectorAll(".animation-invisible"),
         "animation-invisible",
         "animation-visible",
       );
-      fadeInBall(2000);
 
       index = (index + 1) % arr.length;
-    }, 2000);
+    }, 1000);
+
+    setTimeout(() => {
+      replaceBallImage(item.imageURI);
+      fadeInBall(5000);
+    }, 5000);
   }
 
   return setInterval(cycle, 15 * 1000);
