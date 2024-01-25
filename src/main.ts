@@ -3,10 +3,10 @@ import { beginRendering, onLoad } from "./scene";
 import { cycleStart } from "./textCycle";
 
 document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
-<div class="flex h-screen justify-center md:justify-start">
+<div class="flex h-dvh justify-center md:justify-start">
   <div class="flat-background"></div>
   <div class="flat-background2 md:hidden"></div>
-  <div class="flex flex-col h-screen">
+  <div class="flex flex-col h-dvh">
     <div
       class="container flex-grow mr-auto flex align-center justify-start p-4 md:p-8"
     >
