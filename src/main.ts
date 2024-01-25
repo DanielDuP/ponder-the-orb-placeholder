@@ -26,6 +26,7 @@ document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
           </p>
           <form
             netlify
+            name="waitlist"
             class="bg-purple-900 flex overflow-hidden w-full md:max-w-[40rem] rounded-2xl ring-offset-0 has-[:focus]:ring-4 ring-purple-500"
           >
             <input
