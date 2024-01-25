@@ -6,9 +6,9 @@ import { DRACOLoader } from "three/addons/loaders/DRACOLoader.js";
 let scene: THREE.Scene;
 let renderer: THREE.WebGLRenderer;
 let textureCube;
-let innerSphereMesh;
+let innerSphereMesh: THREE.Mesh;
 let innerSphereMaterial: THREE.MeshBasicMaterial;
-let outerSphereMesh;
+let outerSphereMesh: THREE.Mesh;
 
 let textureEquirec: THREE.Texture;
 
@@ -37,10 +37,10 @@ let loaderCallback: () => void | undefined;
 
 // subtle mouse movements:
 // Variables to store the current mouse position
-let mouseX = 0;
-let mouseY = 0;
-const sensitivityX = 0.0025; // Adjust as needed for x-axis sensitivity
-const sensitivityY = 0.0012; // Adjust as needed for y-axis sensitivity
+// let mouseX = 0;
+// let mouseY = 0;
+// const sensitivityX = 0.0025; // Adjust as needed for x-axis sensitivity
+// const sensitivityY = 0.0012; // Adjust as needed for y-axis sensitivity
 
 const baseLight = new THREE.HemisphereLight(0xffffff, 0x000000, 0.5);
 
@@ -76,7 +76,7 @@ function getCurrentCameraPosition() {
   return position1;
 }
 
-let isMoving = false;
+// let isMoving = false;
 
 init();
 
@@ -367,32 +367,32 @@ function onWindowResize() {
 }
 
 // Event listener for mouse movement
-document.addEventListener("mousemove", (event) => {
-  mouseX = event.clientX - window.innerWidth / 2;
-  mouseY = event.clientY - window.innerHeight / 2;
-});
+// document.addEventListener("mousemove", (event) => {
+//  mouseX = event.clientX - window.innerWidth / 2;
+//  mouseY = event.clientY - window.innerHeight / 2;
+// });
 
-function updateCameraWithMouse() {
-  if (!camera) {
-    throw new Error("Camera is undefined!");
-  }
-  // Adjust the camera position or rotation based on mouse position
-  // Only update if the camera is not currently transitioning
-  if (isMoving) {
-    return;
-  }
-
-  const currentPosition = getCurrentCameraPosition().clone();
-  const zoomFactor = controls.zoomed ? 0.1 : 1;
-
-  const deviationX = mouseX * sensitivityX * zoomFactor;
-  const deviationY = mouseY * sensitivityY * zoomFactor;
-
-  currentPosition.x += deviationX;
-  currentPosition.y -= deviationY;
-  camera.position.copy(currentPosition);
-  camera.lookAt(origin);
-}
+//function updateCameraWithMouse() {
+// if (!camera) {
+//   throw new Error("Camera is undefined!");
+// }
+// // Adjust the camera position or rotation based on mouse position
+// // Only update if the camera is not currently transitioning
+// if (isMoving) {
+//   return;
+// }
+//
+// const currentPosition = getCurrentCameraPosition().clone();
+// const zoomFactor = controls.zoomed ? 0.1 : 1;
+//
+// const deviationX = mouseX * sensitivityX * zoomFactor;
+// const deviationY = mouseY * sensitivityY * zoomFactor;
+//
+// currentPosition.x += deviationX;
+// currentPosition.y -= deviationY;
+// camera.position.copy(currentPosition);
+// camera.lookAt(origin);
+// }
 
 // function onDeviceOrientationChangeEvent(event: any) {
 //   if (initialAlpha === undefined || initialBeta === undefined) {
@@ -447,6 +447,9 @@ let camRadius = 4;
 let camSpeed = 0.001;
 
 function cameraRotate() {
+  if (!camera) {
+    return;
+  }
   camAngle += camSpeed;
   camera.position.x = camRadius * Math.cos(camAngle);
   camera.position.z = camRadius * Math.sin(camAngle);
