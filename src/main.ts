@@ -24,7 +24,8 @@ document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
           >
             Sign up for the world's first Orb-As-A-Service (OAAS).
           </p>
-          <div
+          <form
+            netlify
             class="bg-purple-900 flex overflow-hidden w-full md:max-w-[40rem] rounded-2xl ring-offset-0 has-[:focus]:ring-4 ring-purple-500"
           >
             <input
@@ -32,14 +33,16 @@ document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
               class="bg-purple-900 text-white text-lg rounded-l-2xl flex flex-grow p-4"
               placeholder="email@example.com"
               id="emailInput"
+              name="email"
             />
             <button
+              type="submit"
               id="waitlistButton"
               class="bg-purple-600 hover:bg-violet-500 active:bg-purple-950 text-white px-6"
             >
               Waitlist me!
             </button>
-          </div>
+          </form>
         </div>
       </div>
     </div>
