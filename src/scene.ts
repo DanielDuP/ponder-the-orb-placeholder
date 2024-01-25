@@ -444,7 +444,7 @@ function onWindowResize() {
 //
 let camAngle = 0;
 let camRadius = 4;
-let camSpeed = 0.001;
+let camSpeed = 0.0005;
 
 function cameraRotate() {
   if (!camera) {
