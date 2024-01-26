@@ -22,6 +22,12 @@ const position2 = new THREE.Vector3(0, 0, 4);
 let ballVisibility = 1;
 let fadeState: "out" | "in" | undefined;
 
+let camAngle = 0;
+let camRadius = 4;
+let camSpeed = 0.0005;
+
+const camBack = camSpeed * 50;
+
 const controls = {
   zoomed: true,
   greyScale: 0.5, // Default value for grey scale
@@ -122,14 +128,14 @@ function init() {
 
   const textureLoader = new THREE.TextureLoader();
 
-  textureEquirec = textureLoader.load("./dark-s_nz.jpg");
+  textureEquirec = textureLoader.load("./initial.webp");
   // textureEquirec.mapping = THREE.EquirectangularReflectionMapping;
 
   textureEquirec.colorSpace = THREE.SRGBColorSpace;
 
   textureEquirec.wrapS = THREE.RepeatWrapping;
   textureEquirec.wrapT = THREE.RepeatWrapping;
-  textureEquirec.repeat.set(9, 7);
+  textureEquirec.repeat.set(5, 3);
 
   scene.background = textureCube;
 
@@ -140,6 +146,7 @@ function init() {
   innerSphereMesh = new THREE.Mesh(innerSphereGeometry, innerSphereMaterial);
   innerSphereMesh.rotation.y = 1.5;
   scene.add(innerSphereMesh);
+  replaceBallImage("./initial.webp");
 
   // scratches
   const scratchNormal = textureLoader.load("./damage/ScratchNormal.jpg");
@@ -184,10 +191,6 @@ function onWindowResize() {
   renderer.setPixelRatio(window.devicePixelRatio);
   renderer.setSize(window.innerWidth, window.innerHeight);
 }
-
-let camAngle = 0;
-let camRadius = 4;
-let camSpeed = 0.0005;
 
 function cameraRotate() {
   if (!camera) {
@@ -241,8 +244,6 @@ export function fadeInBall(time: number) {
     ballVisibility = 1;
   }, time);
 }
-
-const camBack = camSpeed * 50;
 
 export function replaceBallImage(imageURI: string) {
   const textureLoader = new THREE.TextureLoader();

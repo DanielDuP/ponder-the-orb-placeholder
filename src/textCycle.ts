@@ -70,7 +70,7 @@ function cycleThroughArray(arr: ItemType[]) {
       "animation-visible",
       "animation-invisible",
     );
-    fadeOutBall(5000);
+    fadeOutBall(4000);
     const item = arr[index];
     setTimeout(() => {
       updateTextContent(item);
@@ -85,11 +85,11 @@ function cycleThroughArray(arr: ItemType[]) {
 
     setTimeout(() => {
       replaceBallImage(item.imageURI);
-      fadeInBall(9000);
-    }, 5000);
+      fadeInBall(4000);
+    }, 4000);
   }
 
-  return setInterval(cycle, 15 * 1000);
+  return setInterval(cycle, 10 * 1000);
 }
 
 export function cycleStart() {
