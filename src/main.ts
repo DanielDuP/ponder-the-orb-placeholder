@@ -1,5 +1,5 @@
 import "./index.css";
-import { beginRendering, onLoad } from "./scene";
+import { beginRendering } from "./scene";
 import { cycleStart } from "./textCycle";
 
 document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
@@ -66,7 +66,5 @@ document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
 </div>
 `;
 
-onLoad(() => {
-  cycleStart();
-  beginRendering();
-});
+cycleStart();
+beginRendering();
