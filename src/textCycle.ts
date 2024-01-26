@@ -85,7 +85,7 @@ function cycleThroughArray(arr: ItemType[]) {
 
     setTimeout(() => {
       replaceBallImage(item.imageURI);
-      fadeInBall(5000);
+      fadeInBall(9000);
     }, 5000);
   }
 

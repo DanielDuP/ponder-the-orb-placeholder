@@ -112,12 +112,12 @@ function init() {
   const loader = new THREE.CubeTextureLoader();
 
   textureCube = loader.load([
-    "px.png",
-    "nx.png",
-    "py.png",
-    "ny.png",
-    "pz.png",
-    "nz.png",
+    "px.webp",
+    "nx.webp",
+    "py.webp",
+    "ny.webp",
+    "pz.webp",
+    "nz.webp",
   ]);
 
   const textureLoader = new THREE.TextureLoader();
@@ -135,7 +135,7 @@ function init() {
 
   // spheres
 
-  const innerSphereGeometry = new THREE.IcosahedronGeometry(1, 15);
+  const innerSphereGeometry = new THREE.IcosahedronGeometry(1, 0);
   innerSphereMaterial = new THREE.MeshBasicMaterial();
   innerSphereMesh = new THREE.Mesh(innerSphereGeometry, innerSphereMaterial);
   innerSphereMesh.rotation.y = 1.5;
@@ -146,7 +146,7 @@ function init() {
   const scratchOcclusion = textureLoader.load("./damage/ScratchOcclusion.jpg");
   const scratchRoughness = textureLoader.load("./damage/ScratchRoughness.jpg");
 
-  const outerSphereGeometry = new THREE.SphereGeometry(1.1, 50);
+  const outerSphereGeometry = new THREE.SphereGeometry(1.1, 30);
   outerSphereMaterial = new THREE.MeshPhysicalMaterial({
     roughness: 0.15,
     roughnessMap: scratchRoughness,
@@ -181,7 +181,7 @@ function onWindowResize() {
   }
   camera.aspect = window.innerWidth / window.innerHeight;
   camera.updateProjectionMatrix();
-
+  renderer.setPixelRatio(window.devicePixelRatio);
   renderer.setSize(window.innerWidth, window.innerHeight);
 }
 
@@ -200,7 +200,8 @@ function cameraRotate() {
 
 function animate() {
   requestAnimationFrame(animate);
-  // updateCameraWithMouse();
+  cameraRotate();
+  render();
   if (fadeState) {
     if (fadeState === "out") {
       ballVisibility -= 0.01;
@@ -210,17 +211,11 @@ function animate() {
     setSphereGreyness(ballVisibility);
     setSphereThickness(ballVisibility);
   }
-  cameraRotate();
-  render();
 }
 
 function render() {
-  if (!camera) {
-    console.error("No camera!");
-    return;
-  }
-  camera.lookAt(scene.position);
-  renderer.render(scene, camera);
+  camera!.lookAt(scene.position);
+  renderer.render(scene, camera!);
 }
 
 export function beginRendering() {
